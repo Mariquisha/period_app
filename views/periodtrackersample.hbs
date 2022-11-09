@@ -1,0 +1,69 @@
+    <style>
+    section{
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+    .tracker{
+        padding-top: 60px;
+        margin-left: 50px;
+    }
+  </style>
+  <section class="container tracker">  
+        <h2>Period Tracker</h2>
+        <p>
+            Click on dates to add period.
+            We’ll calculate your ovualtion cycle based on the period cycle you give us.
+            The more cycles you add, the more accurate our predictions will be.
+        </p>
+    </section>
+     <section>
+        <a href="/login" class="btn btn-primary">
+            Sign Up and Create an Account
+        </a>
+    </section>
+    <section>
+         <!--start calendar-->
+        <div id="container">
+        <div id="header">
+            <div id="monthDisplay"></div>
+            <div>
+            <button id="backButton">Back</button>
+            <button id="nextButton">Next</button>
+            </div>
+        </div>
+
+        <div id="weekdays">
+            <div>Sunday</div>
+            <div>Monday</div>
+            <div>Tuesday</div>
+            <div>Wednesday</div>
+            <div>Thursday</div>
+            <div>Friday</div>
+            <div>Saturday</div>
+        </div>
+
+        <div id="calendar"></div>
+        </div>
+
+        <div id="newEventModal">
+        <h2>New Event</h2>
+
+        <input id="eventTitleInput" placeholder="Event Title" />
+
+        <button id="saveButton">Save</button>
+        <button id="cancelButton">Cancel</button>
+        </div>
+
+        <div id="deleteEventModal">
+        <h2>Event</h2>
+
+        <p id="eventText"></p>
+
+        <button id="deleteButton">Delete</button>
+        <button id="closeButton">Close</button>
+        </div>
+
+        <div id="modalBackDrop"></div>
+    <!--end calendar-->
+    </section>
+   

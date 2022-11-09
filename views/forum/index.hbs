@@ -1,0 +1,53 @@
+<style>
+    section{
+      padding: 80px 0 20px 0;
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+</style>
+<section><h1>Forum</h1></section>
+<div class="row">
+    <div class="">
+        {{> _add_btn}}
+        <br>
+    </div>
+    {{#each posts}}
+            <div class="card" style="">
+                <div class="card-body">
+                    <div class="center-align">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">{{stripTags (truncate body 150)}}</p>
+                        <br>
+                        <!-- <div class="chip">
+                         <img src="{{user.image}}" alt="">
+                        <a href="/forum/user/{{user._id}}">{{user.displayName}}</a>
+                        </div> -->
+                        <div>
+                            <span class="card-subtitle text-muted">{{user.displayName}}</span>
+                        </div>
+                    </div>
+                    <div class="center-align">
+                        <a href="/forum/{{_id}}" class="btn btn-secondary">Read More</a>
+                    </div>
+                    <br>
+                    <div class="container row center-align">
+                        <form action="/forum/{{_id}}" method="POST" id="delete-form" class="col">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-warning btn-sm col">
+                                <i class="fas fa-trash col"></i>
+                            </button>
+                        </form>
+                        <div class="card-image col">
+                            <button class="btn btn-info btn-sm col">
+                            {{{editIcon user ../user _id}}}
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <br>
+            </div>
+    {{else}}
+        <p>No posts to display</p>
+    {{/each}}
+</div>

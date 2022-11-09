@@ -1,0 +1,98 @@
+ <style>
+    section{
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+    .hello{
+        padding-top: 60px;
+    }
+  </style>
+  <section class="hello">
+    <h2> Hello, {{name}}</h2>
+        <p>
+            Heres your previous period cycles. Click on the calander to add a cycle.
+        </p>
+        <a class="btn btn-warning" href="/forum">Ask a question on our forum</a>
+    </section>
+    <section>
+        <!--start calendar-->
+        <div id="container">
+      <div id="header">
+        <div id="monthDisplay"></div>
+        <div>
+          <button id="backButton">Back</button>
+          <button id="nextButton">Next</button>
+        </div>
+      </div>
+
+      <div id="weekdays">
+        <div>Sunday</div>
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wednesday</div>
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Saturday</div>
+      </div>
+
+      <div id="calendar"></div>
+    </div>
+
+    <div id="newEventModal">
+      <h2>New Event</h2>
+
+      <input id="eventTitleInput" placeholder="Event Title" />
+
+      <button id="saveButton">Save</button>
+      <button id="cancelButton">Cancel</button>
+    </div>
+
+    <div id="deleteEventModal">
+      <h2>Event</h2>
+
+      <p id="eventText"></p>
+
+      <button id="deleteButton">Delete</button>
+      <button id="closeButton">Close</button>
+    </div>
+
+    <div id="modalBackDrop"></div>
+    <!--end calendar-->
+   <p>Here are your Forum Posts.</p>
+   {{> _add_btn}}
+{{#if posts}}
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each posts}}
+                <tr>
+                    <td><a href="/forum/{{_id}}">{{title}}</a></td>
+                    <td>{{formatDate createdAt 'MMM Do YYYY, h:mm:ss a'}}</td>
+                    <td><span class="dash-status">{{status}}</span></td>
+                    <td>
+                        <a href="/forum/edit/{{_id}}" class="btn btn-float">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <form action="/forum/{{_id}}" method="POST" id="delete-form">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn red">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+<p> You have not created any forum posts.</p>
+{{/if}}

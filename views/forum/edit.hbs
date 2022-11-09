@@ -1,0 +1,29 @@
+<style>
+    section{
+      padding: 80px 0 60px 0;
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+</style>
+<section><h3>Edit Post</h3></section>
+<div class="row">
+    <form action="/forum/{{post._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="title" value="{{post.title}}">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="class">
+                <textarea name="body" id="body">{{post.body}}</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn btn-danger">Cancel</a>
+        </div>
+    </form>
+</div>
