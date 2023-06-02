@@ -3,6 +3,7 @@ const { errorMonitor } = require('connect-mongo')
 const mongoose = require('mongoose')
 const passport = require('passport')
 const User = require('../models/User')
+require('dotenv').config()
 
 module.exports = function(passort){
     passport.use(new GoogleStrategy({
@@ -33,9 +34,14 @@ module.exports = function(passort){
     passport.serializeUser(function(user, done) {
         done(null, user.id)
     })
-    passport.deserializeUser(function(id, done) {
+    passport.deserializeUser(async (id, done) => {
+
+        done(null, await User.findById(id))
+
+    });
+    /*passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user){
             done(err, user);
         });        
-    });
+    });*/
 }
